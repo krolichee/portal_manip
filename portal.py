@@ -18,7 +18,6 @@ mt_x.cs = ColorSensor(INPUT_2)
 def new_function():
     pass
     pass
-    pass
 
 def home_y():
     m_y.run_forever(speed_sp=-300)
