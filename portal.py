@@ -34,9 +34,6 @@ mt_x.stop()
 mt_x.run_forever(speed_sp=100)
 ts_x.wait_for_released()
 
-
-
-
 try:
     while not ts_x.is_pressed:
         mt_x.follow_line( kp=11.3, ki=0.05, kd=3.2, speed=SpeedPercent(30),
