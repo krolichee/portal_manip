@@ -15,20 +15,18 @@ m_x2 = LargeMotor(OUTPUT_D)
 mt_x = MoveTank(OUTPUT_B, OUTPUT_D)
 mt_x.cs = ColorSensor(INPUT_2)
 
+def new_function():
+    pass
+
 def home_y():
     m_y.run_forever(speed_sp=-300)
     ts_y.wait_for_pressed()
     m_y.stop()
 
-
-
-
-
 def home_x():
     mt_x.run_forever(speed_sp=-300)
     ts_x.wait_for_pressed()
     mt_x.stop()
-
 
 def test_x():
     mt_x.run_forever(speed_sp=100)
