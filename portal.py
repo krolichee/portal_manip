@@ -47,10 +47,8 @@ m_y.run_to_rel_pos(position_sp=Y_AMP_MAX/2)
 
 while True:
     inp = input()
-    if inp == "w":
-        m_y.run_to_rel_pos(position_sp=100)
-    elif inp == "s":
-        m_y.run_to_rel_pos(position_sp=-100)
+    print(inp)
+    m_y.run_to_rel_pos(position_sp=-100)
 
 
 
