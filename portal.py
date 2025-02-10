@@ -44,13 +44,13 @@ def test_x():
 home_y()
 m_y.speed_sp = 500
 m_y.run_to_rel_pos(position_sp=Y_AMP_MAX/2)
+home_x()
+test_x()
 
 while True:
     inp = input()
     print(inp)
     m_y.run_to_rel_pos(position_sp=-100)
 
-home_x()
-test_x()
 
 
