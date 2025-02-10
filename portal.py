@@ -35,7 +35,7 @@ def test_x():
 
     try:
         while not ts_x.is_pressed:
-            mt_x.follow_line( kp=11.3, ki=0.05, kd=3.2, speed=SpeedPercent(30),
+            mt_x.follow_line( kp=2.3, ki=0.05, kd=3.2, speed=SpeedPercent(30),
                               follow_for=follow_for_forever,follow_left_edge=False,target_light_intensity=16,sleep_time=0.01,)
     except LineFollowErrorTooFast:
         mt_x.stop()
@@ -50,6 +50,7 @@ while True:
     print(inp)
     m_y.run_to_rel_pos(position_sp=-100)
 
-
+home_x()
+test_x()
 
 
