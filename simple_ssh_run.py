@@ -9,6 +9,7 @@ import sys
 
 from pycparser.c_ast import While
 
+from portal import move_y
 
 def main():
     # Создание SSH-клиента
@@ -34,7 +35,8 @@ def main():
 
 
 
-        print("Подключение установлено. Вводите команды (или 'exit' для выхода).")
+        print("Подключение установлено. Вводите команды.")
+        print("exit - выход", "move_y - движение по Y", sep='\n')
         sleep(1)
         check_and_print_recv(channel)
 
@@ -45,14 +47,18 @@ def main():
         # Чтение ввода пользователя
         while True:
             # Чтение ввода пользователя
-            # command = input(f"{username}@{hostname}:\\~$ ")
-            #
-            # # Отправка команды на сервер
-            # channel.send(command + "\n")
-            #
-            # # Выход, если пользователь ввел 'exit'
-            # if command.strip() == 'exit':
-            #     break
+            command = input(f"{username}@{hostname}:\\~$ ")
+
+             # Отправка команды на сервер
+            channel.send(command + "\n")
+
+            # Выход, если пользователь ввел 'exit'
+            if command.strip() == 'exit':
+                break
+            elif command.strip() == 'move_y':
+                position = input("На какую позицию сдвинуть?")
+                move_y(position)
+
 
             # Чтение вывода от сервера
             sleep(1)

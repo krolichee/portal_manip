@@ -15,9 +15,10 @@ m_x2 = LargeMotor(OUTPUT_D)
 mt_x = MoveTank(OUTPUT_B, OUTPUT_D)
 mt_x.cs = ColorSensor(INPUT_2)
 
-def new_function():
-    pass
-    pass
+def move_y(positions):
+    move = positions * 10
+    m_y.speed_sp = 500
+    m_y.run_to_rel_pos(position_sp=move)
 
 def home_y():
     m_y.run_forever(speed_sp=-300)
