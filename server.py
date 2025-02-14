@@ -10,7 +10,7 @@ class MyHandler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-
+        print(post_data.decode('utf-8'))
         #response = f"Received POST data: {post_data.decode('utf-8')}"
         response = str(type(json.loads(
             post_data.decode('utf-8')
