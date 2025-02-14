@@ -45,18 +45,18 @@ def main():
         check_and_print_recv(channel)
         # Чтение ввода пользователя
         while True:
-            # Чтение ввода пользователя
-            command = input(f"{username}@{hostname}:\\~$ ")
+            # # №Чтение ввода пользователя
+            # command = input(f"{username}@{hostname}:\\~$ ")
 
-             # Отправка команды на сервер
-            channel.send(command + "\n")
+            #  # Отправка команды на сервер
+            # channel.send(command + "\n")
 
-            # Выход, если пользователь ввел 'exit'
-            if command.strip() == 'exit':
-                break
-            # elif command.strip() == 'move_y':
-            #     position = input("На какую позицию сдвинуть?")
-            #     move_y(position)
+            # # Выход, если пользователь ввел 'exit'
+            # if command.strip() == 'exit':
+            #     break
+            # # elif command.strip() == 'move_y':
+            # #     position = input("На какую позицию сдвинуть?")
+            # #     move_y(position)
 
 
             # Чтение вывода от сервера
