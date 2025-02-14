@@ -9,7 +9,6 @@ import sys
 
 from pycparser.c_ast import While
 
-from portal import move_y
 
 def main():
     # Создание SSH-клиента
