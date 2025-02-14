@@ -2,8 +2,6 @@ import json
 from http.client import responses
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import cgi
-
-
 class MyHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -14,7 +12,9 @@ class MyHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
         #response = f"Received POST data: {post_data.decode('utf-8')}"
-        response = json.loads(post_data.decode('utf-8'))["name"]
+        response = str(type(json.loads(
+            post_data.decode('utf-8')
+        )["y"]))
         self.wfile.write(response.encode('utf-8'))
 
 

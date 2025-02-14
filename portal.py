@@ -4,6 +4,14 @@ from ev3dev2.motor import *
 from ev3dev2._platform.ev3 import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import TouchSensor, ColorSensor
 
+import json
+from http.client import responses
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+import cgi
+
+
+
+
 Y_AMP_MAX = 2200
 X_AMP_MAX = 1300
 
@@ -46,12 +54,31 @@ home_y()
 m_y.speed_sp = 500
 m_y.run_to_rel_pos(position_sp=Y_AMP_MAX/2)
 home_x()
-test_x()
 
-while True:
-    inp = input()
-    print(inp)
-    m_y.run_to_rel_pos(position_sp=-100)
+class MyHandler(SimpleHTTPRequestHandler):
+    def do_POST(self):
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
+
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
+        response = f"Received POST data: {post_data.decode('utf-8')}"
+        y = json.loads(
+            post_data.decode('utf-8')
+        )["y"]
+        m_y.run_to_rel_pos(position_sp=y)
+
+        self.wfile.write(response.encode('utf-8'))
+
+
+server_address = ('', 8000)
+httpd = HTTPServer(server_address, MyHandler)
+
+print("Starting server on port 8000...")
+httpd.serve_forever()
+
 
 
 
