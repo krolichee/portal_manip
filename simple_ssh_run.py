@@ -55,9 +55,9 @@ def main():
             # Выход, если пользователь ввел 'exit'
             if command.strip() == 'exit':
                 break
-            elif command.strip() == 'move_y':
-                position = input("На какую позицию сдвинуть?")
-                move_y(position)
+            # elif command.strip() == 'move_y':
+            #     position = input("На какую позицию сдвинуть?")
+            #     move_y(position)
 
 
             # Чтение вывода от сервера
