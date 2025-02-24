@@ -1,7 +1,11 @@
 import json
 from http.client import responses
+import socketserver
+
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import cgi
+
+PORT = 8000
 class MyHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -17,9 +21,7 @@ class MyHandler(SimpleHTTPRequestHandler):
         )["y"]))
         self.wfile.write(response.encode('utf-8'))
 
-
-server_address = ('', 8000)
-httpd = HTTPServer(server_address, MyHandler)
+httpd =  socketserver.TCPServer(("0.0.0.0", PORT), MyHandler)
 
 print("Starting server on port 8000...")
 httpd.serve_forever()

@@ -6,14 +6,14 @@ import requests
 
 def send_value_to_server(value):
     # URL сервера, на который отправляется запрос
-    url = "http://localhost:8000/"
+    url = "http://ev3dev:8004/"
 
     # Параметры запроса (в данном случае передаем значение ползунка)
-    payload = {'y': str(value)}
+    payload = {'y': value}
 
     try:
         # Отправляем POST-запрос на сервер
-        response = requests.post(url, data=json.dumps(payload))
+        response = requests.get(url, data=json.dumps(payload))
 
         # Проверяем статус ответа
         if response.status_code == 200:
@@ -34,7 +34,7 @@ root = tk.Tk()
 root.title("Ползунок с отправкой значения на сервер")
 
 # Создаем ползунок (Scale)
-scale = tk.Scale(root, from_=0, to=100, orient=tk.HORIZONTAL, command=on_scale_move)
+scale = tk.Scale(root, from_=0, to=1300, orient=tk.HORIZONTAL, command=on_scale_move)
 scale.pack(pady=20, padx=20)
 
 # Запускаем главный цикл обработки событий
