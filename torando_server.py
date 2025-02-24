@@ -14,11 +14,11 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 
     def on_message(self, message):
 
-        print(f"Received message: {message}")
+        print("Received message: "+str(message))
 
         # Эхо-ответ
 
-        self.write_message(f"You said: {message}")
+        self.write_message("You said: "+str(message))
 
 
     def on_close(self):
